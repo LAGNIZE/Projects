@@ -1,16 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Необычная Москва</title>
-	<link rel="stylesheet" href="./style/style.css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic">
-</head>
-
-
+<link rel="stylesheet" href="./style/style.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic">
+<link rel="stylesheet" href="./style/jellySlider.css" />
+<script src="./script/jquery-3.6.0.slim.min.js"></script>
+<script src="./script/jeuqry.jellySlider-1.0.js"></script>
 
 <body>
 	<div class="wrapper">
@@ -44,7 +37,41 @@
 			</div>
 		</header>
 		<main class="page">
-			
+			<slider id="example" class="jelly-slider">
+				<div class="jelly-list">
+					<div class="jelly-slide">
+						Необычная Москва <br>
+						MyMoscow <br>
+						Агенство интересных маршрутов
+						<div class="text__button">
+							<button style="background: #709DCA; border: 1px solid white;">
+								- ПОДРОБНЕЕ О НАС -
+							</button>
+						</div>
+					</div>
+					<div class="jelly-slide">
+						Необычная Москва <br>
+						MyMoscow <br>
+						Выберите подходящий тур <br>
+						<div class="text__button">
+							<button style="background: #709DCA; border: 1px solid white;">
+								<a href="../Trips/trips.html">
+									- ТУРЫ -
+								</a>
+							</button>
+						</div>
+					</div>
+					<div class="jelly-slide">
+						Необычная Москва <br>
+						MyMoscow <br>
+						Как с нами связаться <br>
+						<div class="text__button">
+							<button style="background: #709DCA; border: 1px solid white;">
+								- КОНТАКТЫ -
+							</button>
+						</div>
+					</div>
+			</slider>
 		</main>
 		<info class="info">
 			<div class="info__container _container">
@@ -268,6 +295,7 @@
 		<footer class="footer">
 			<div class="footer__container _container">
 				<div class="footer__column">
+					<img src="./icons/spasskaya-tower.png" style="max-width: 50px;" alt="">
 					<img class="column__image" src="./icons/MyMoscow.png" alt="">
 					<div class="column__img__text">
 						Мы приглашаем тебя на самые разные
@@ -356,5 +384,10 @@
 		</footer>
 	</div>
 </body>
-
-</html>
+<script>
+	$(function () {
+		$('#example').jellySlider({
+			loop: true
+		});
+	});
+</script>

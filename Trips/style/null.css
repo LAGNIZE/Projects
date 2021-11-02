@@ -23,8 +23,7 @@ li {
 }
 
 a, a:hover, a:active, a:visited, a:focus {
-	text-decoration: none;
-	color: white;
+	text-decoration:none;
 }
 
 h1,
