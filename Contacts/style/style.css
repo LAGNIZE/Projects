@@ -84,14 +84,14 @@ body {
 .page {
 	flex: 1 1 auto;
 	height: 560px;
-	background-image: url(../photos/top.png);
+	background-image: url(../photos/top..jpg);
 	background-size: cover;
 }
 
 /*--------INFO-----------------*/
 
 .info {
-	height: 150px;
+	height: 350px;
 }
 
 .info__header {
@@ -102,6 +102,7 @@ body {
 .header__title {
 	color: rgb(112, 157, 202);
 	font-size: 25px;
+	margin-bottom: 30px;
 }
 
 .header_text {
@@ -126,14 +127,26 @@ body {
 
 .element__container {
 	display: flex;
+	background: #FFC155;
 }
 
 .element__image img{
-	width: 70px;
+	width: 250px;
 }
 
 .element__alltext {
 	padding-left: 20px;
+}
+
+.form_input input, .form_input button{
+	width: 100%;
+	border: 3px solid #FFC155;
+	height: 50px;
+}
+
+.form_input:not(:last-child) {
+	margin: 0px 0px 10px 0px;
+	
 }
 
 /*-------WHOWEARE-----------*/
