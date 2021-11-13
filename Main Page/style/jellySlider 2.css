@@ -34,7 +34,7 @@
 .jelly-slider2 .jelly-prev2 {
   position: absolute;
   top: 70%;
-  left: 0;
+  left: 40%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
   width: 30px;
@@ -52,7 +52,7 @@
   top: 0;
   right: 0;
   bottom: 0;
-  left: 80vh;
+  left: 0;
   content: url(../icons/Rectangle.png);
   font-size: 50px;
   color: orange;
@@ -61,7 +61,7 @@
 .jelly-slider2 .jelly-next2 {
   position: absolute;
   top: 70%;
-  right: 0;
+  right: 42%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
   width: 30px;
@@ -79,7 +79,7 @@
   top: 0;
   right: 0;
   bottom: 0;
-  left: -170vh;
+  left: 0;
   content: url(../icons/Rectangle1.png);
   font-size: 20px;
   color: #000;
