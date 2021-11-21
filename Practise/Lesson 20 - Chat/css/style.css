@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    width: fit-content;
+    margin: 20px;
+}
+
+.messages {
+    width: 245px;
+    height: 120px; 
+    margin-top: 5px ; 
+    background-color: rgb(56, 59, 64); 
+    color: white;
+    overflow: scroll;
+}
+
+.message {
+    background-color: orange;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 5px;
+    margin: 5px 0px 5px 5px;
+}
+
+.myMessage {
+    background-color: blue;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 5px;
+    margin: 5px 0px 5px 200px;
+}
+
+.sendText {
+    margin-top: 10px;
+}
