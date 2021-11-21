@@ -1,0 +1,44 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+<script>
+	$.ajaxSetup({ async: false })
+	let offset = 0;
+	let x = 0;
+	setInterval(function () {
+		let response = $.get("https://api.telegram.org/bot2023002074:AAFEqzEOTQSbWVqyDiEGemXpAmMYTj3V8qU/getUpdates?offset=" + offset)
+		let json = response.responseText
+		let array = JSON.parse(json)
+		if (array.result.length > 0) {
+			$("body").prepend("<fieldset><legend>Message #" + x + "</legend><input class=first_name" + x + "> <input class=last_name" + x + "> <input class=username" + x + "> <p><input class=message" + x + "> <input class=time" + x + "></p></p></fieldset>")
+			let text = array.result[0].message.text
+			if (text == "бяка" || text == "редиска" || text == "skillbox") {
+				$('.message' + x).val("")
+				$('.message' + x).css("backgroundColor", "red")
+			}
+			else {
+				$('.message' + x).css("backgroundColor", "white")
+				$('.message' + x).val(text)
+			}
+			let firstName = array.result[0].message.chat.first_name
+			let lastName = array.result[0].message.chat.last_name
+			let userName = array.result[0].message.chat.username
+			$('.first_name' + x).val(firstName)
+			$('.last_name' + x).val(lastName)
+			$('.username' + x).val(userName)
+			let time = array.result[0].message.date
+			let newDate = new Date(time * 1000)
+			let newHours = newDate.getHours()
+			let newMinutes = newDate.getMinutes()
+			let newFullDate = newHours + ":" + newMinutes
+			$('.time' + x).val(newFullDate)
+			offset = array.result[0].update_id + 1
+			x++
+		}
+	}, 1000)
+</script>
+
+<style>
+	fieldset {
+		width: fit-content;
+	}
+</style>

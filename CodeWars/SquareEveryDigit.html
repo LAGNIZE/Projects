@@ -1,0 +1,42 @@
+<script>
+	//-------SOLUTION 1------------
+	//function takes number as an argument
+function squareDigits(num){
+   //the toString method converts a number into a string
+   var number = num.toString();
+   //the split method splits the string into individual numbers
+   var arr = number.split("");
+   //this variable will hold the numbers that we square later
+   var squaredArr = [];
+   //the for loop iterates through everything in our array
+   for(var i=0; i<arr.length; i++){
+      //parseInt turns a string into a number
+      var int = parseInt(arr[i]);
+      //Math.pow raises integers to a given exponent, in this case 2
+      int = Math.pow(int, 2);
+      //we push the number we just made into our squared array as a string
+      squaredArr.push(int.toString());
+   }
+   //the function returns the numbers in the squared array after joining 
+   //them together.  You could also parseInt the array if you wanted, doing 
+   //this as parseInt(squaredArr[0]);  (this would be done after joining)
+   return squaredArr.join('');
+}
+
+	s = squareDigits(1221)
+	console.log(s)
+
+	//---------SOLUTION 2-------------
+
+	/*.split takes a string and splits it into an array based on the character(s) passed to it '' in this case.
+	.map works like a for loop but takes a function as an argument. That function is applied to every member of the array.
+	.join does the opposite of .split. It takes an Array and concatenates it into a string based on the character(s) passed to it.
+	*/
+
+	function squareDigits2(num){
+    return Number(('' + num).split('').map(function (val) { return val * val;}).join(''));
+	}
+
+	s1 = squareDigits2(1221)
+	console.log(s1)
+</script>

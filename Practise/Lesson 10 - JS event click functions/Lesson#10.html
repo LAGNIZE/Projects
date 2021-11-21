@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="square">
+
+    </div>
+
+    <div class="textos">
+
+    </div>
+</body>
+
+<style>
+    .square {
+        width: 100px;
+        height: 100px;
+        background-color: black;
+        background-image: ;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .textos {
+        width: fit-content;
+        height: fit-content;
+        background-color: black;
+        margin-top: 200px;
+        color: white;
+        text-align: center;
+    }
+</style>
+
+<script>
+    document.onkeyup = function() {
+        // event - глобальный объект, которому известны все события, к которому можно обратиться. Браузер записывает в него все события
+        // == - не строгое сравнение, === - строгое сравнение (по типам)
+        let square = document.querySelector(".square") // нашли ссылку на элемент и сохранили в переменную. Вынесли из if т.к. он повторяется
+        if (event.keyCode === 37) {
+            console.log("Нажата клавиша влево")
+                // getComputedStyle() - определяет все CSS свойства которые есть у элемента
+            let left = getComputedStyle(square).left; // заглядываем в ячейку CSS свойств (.left)
+            // parseInt - переводит из строки в число - 100px в 100
+            let leftNumber = parseInt(left);
+            let leftNew = leftNumber - 100; // новая координата квадрата
+            square.style.left = leftNew + "px"; // двигаем квадрат + конкатенация для того чтобы браузер понял 100px
+        }
+        if (event.keyCode === 38) {
+            console.log("Нажата клавиша вверх")
+            let top = getComputedStyle(square).top;
+            let topnumber = parseInt(top);
+            let topnew = topnumber - 100;
+            square.style.top = topnew + "px";
+        }
+        if (event.keyCode === 39) {
+            console.log("Нажата клавиша вправо")
+            let right = getComputedStyle(square).left;
+            let rightnumber = parseInt(right);
+            let rightnew = rightnumber + 100;
+            square.style.left = rightnew + "px";
+        }
+        if (event.keyCode === 40) {
+            console.log("Нажата клавиша вниз")
+            let bottom = getComputedStyle(square).top;
+            let bottomnumber = parseInt(bottom);
+            let bottomnew = bottomnumber + 100;
+            square.style.top = bottomnew + "px";
+        }
+        if (event.keyCode === 32) {
+            console.log("Нажата клавиша пробел")
+            let center = getComputedStyle(square).left;
+            let centernumber = parseInt(center);
+            let centernew = centernumber + 50;
+            square.style.left = centernew + "%";
+        }
+    }
+
+    function multiply(a, b) {
+        let c = a * b;
+        console.log(c);
+    }
+    multiply(3, 5);
+    multiply(15, 3);
+    multiply(2, 4);
+
+    function generateText(name, age, job) {
+        // ${} - позволяет вставлять в текст переменные
+        let text = `
+        Добрый день, ${name}. Приветсвуем вас на сайте inordic.ru.
+        Мы определили, что ваш возраст ${age}.
+        Вы отличный специалист и мы знаем что ваша основная работа ${job}.`;
+        console.log(text);
+        document.querySelector('.textos').innerHTML += text + "<br>";
+    }
+
+    generateText("Михаил", 25, "сантехник");
+    generateText("Никита", 28, "программист");
+    generateText("Юлия", 22, "продавец");
+</script>
+
+</html>

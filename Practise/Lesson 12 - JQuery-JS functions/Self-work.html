@@ -1,0 +1,24 @@
+<form>
+	<input type="location" class="latitude"> Долгота
+	<input type="location" class="longitude"> Широта
+	<div class="button"></div>
+</form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+<script>
+	$('.button').click(function () {
+		let latitude = $('.latitude').val("")
+		let longitude = $('.longitude').val("")
+		let urlLoc = 'https://api.telegram.org/bot2023002074:AAFEqzEOTQSbWVqyDiEGemXpAmMYTj3V8qU/sendLocation?chat_id=154685689&latitude=' + latitude + "&longitude=" + longitude
+		$.get(urlLoc)
+	})
+</script>
+
+<style>
+	.button {
+		width: 100px;
+		height: 100px;
+		background-color: black;
+	}
+</style>

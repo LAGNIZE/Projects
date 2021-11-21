@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botinok</title>
+</head>
+<body>
+    <form method="GET" action="https://api.telegram.org/bot2023002074:AAFEqzEOTQSbWVqyDiEGemXpAmMYTj3V8qU/sendPhoto">
+      <fieldset>
+        <legend>Photo</legend>
+        <input type="number" name="chat_id" value="154685689"> Chat ID
+        <p><input type="photo" name="photo"> Вставьте URL картинки
+        <p><input type="text" name="caption"> Подпись
+        <p><button>Отправить</button>
+     </fieldset>
+    </form>
+
+    <form method="GET" action="https://api.telegram.org/bot2023002074:AAFEqzEOTQSbWVqyDiEGemXpAmMYTj3V8qU/sendMessage">
+        <fieldset>
+          <legend>Message</legend>
+          <input type="number" name="chat_id" value="154685689"> Chat ID
+          <p><input type="text" name="text"> Сообщение
+          <p><button>Отправить</button>
+       </fieldset>
+      </form>
+
+      <form method="GET" action="https://api.telegram.org/bot2023002074:AAFEqzEOTQSbWVqyDiEGemXpAmMYTj3V8qU/sendLocation">
+        <fieldset>
+          <legend>Location</legend>
+          <input type="number" name="chat_id" value="154685689"> Chat ID
+          <p><input type="location" name="latitude"> Широта
+          <p><input type="location" name="longitude"> Долгота
+          <p><button>Отправить</button>
+       </fieldset>
+      </form>
+</body>
+<style>
+    legend {
+        background-color: black;
+        color: white;
+        padding: 3px 6px;
+    }
+    fieldset {
+        width: fit-content;
+        margin: 10px;
+    }
+</style>
+</html>
