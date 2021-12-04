@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8" />
+</head>
+    <body>
+        <div id="app">
+            <div>
+                <input type="number" style="margin-right: 10px;" v-model="firstMult">
+                <input type="number" v-model="secondMult">
+                <p>{{result}}</p>
+                <p>{{action}}</p>
+            </div>
+            <button v-on:click="doPlus" style="margin-right: 10px">+</button>  
+            <button v-on:click="doMinus" style="margin-right: 10px">-</button>
+            <button v-on:click="doMultiply" style="margin-right: 10px">*</button>
+            <button v-on:click="doDevide">/</button>
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            Vue.createApp({
+              data() {
+                return {
+                    result: 0,
+                    firstMult: 0,
+                    secondMult: 0,
+                    action: ""
+                }
+              },
+              methods: {
+                doPlus() {
+                    this.result = this.firstMult + this.secondMult;
+                    this.action = "Сложение";
+                },
+                doMinus() {
+                    this.result = this.firstMult - this.secondMult;
+                    this.action = "Вычитание";
+                },
+                doMultiply() {
+                    this.result = this.firstMult * this.secondMult;
+                    this.action = "Умножение";
+                },
+                doDevide() {
+                    this.result = this.firstMult / this.secondMult;
+                    this.action = "Деление";
+                }
+              }
+            }).mount('#app');
+        </script>
+    </body>
+</html>
