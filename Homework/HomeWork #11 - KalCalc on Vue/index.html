@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+	<div id="app" class="wrapper">
+		<div class="calories">
+			<div class="potato">
+				<fieldset>
+					<legend>Potato</legend>
+					<input type="number" placeholder="Amount in grams" v-model="potatoGrams">
+					<div>
+						{{Potato}} calories per 100 grams
+					</div>
+				</fieldset>
+			</div>
+			<div class="buckwheat">
+				<fieldset>
+					<legend>Buckwheat</legend>
+					<input type="number" placeholder="Amount in grams" v-model="buckwheatGrams">
+					<div>
+						{{Buckwheat}} calories per 100 grams
+					</div>
+				</fieldset>
+			</div>
+			<div class="fish">
+				<fieldset>
+					<legend>Fish</legend>
+					<input type="number" placeholder="Amount in grams" v-model="fishGrams">
+					<div>
+						{{Fish}} calories per 100 grams
+					</div>
+				</fieldset>
+			</div>
+			<div class="chiken">
+				<fieldset>
+					<legend>Chiken</legend>
+					<input type="number" placeholder="Amount in grams" v-model="chikenGrams">
+					<div>
+						{{Chiken}} calories per 100 grams
+					</div>
+				</fieldset>
+			</div>
+			<div class="pork">
+				<fieldset>
+					<legend>Pork</legend>
+					<input type="number" placeholder="Amount in grams" v-model="porkGrams">
+					<div>
+						{{Pork}} calories per 100 grams
+					</div>
+				</fieldset>
+			</div>
+			<div class="beef">
+				<fieldset>
+					<legend>Beef</legend>
+					<input type="number" placeholder="Amount in grams" v-model="beefGrams">
+					<div>
+						{{Beef}} calories per 100 grams
+					</div>
+				</fieldset>
+			</div>
+			<div class="mutton">
+				<fieldset>
+					<legend>Mutton</legend>
+					<input type="number" placeholder="Amount in grams" v-model="muttonGrams">
+					<div>
+						{{Mutton}} calories per 100 grams
+					</div>
+				</fieldset>
+			</div>
+			<div class="bread">
+				<fieldset>
+					<legend>Bread</legend>
+					<input type="number" placeholder="Amount in grams" v-model="breadGrams">
+					<div>
+						{{Bread}} calories per 100 grams
+					</div>
+				</fieldset>
+			</div>
+		</div>
+		<div>
+			<div class="spagetti">
+				<fieldset>
+					<legend>Spagetti</legend>
+					<input type="number" placeholder="Amount in grams" v-model="spagettiGrams">
+					<div>
+						{{Spagetti}} calories per 100 grams
+					</div>
+				</fieldset>
+			</div>
+			<div class="rice">
+				<fieldset>
+					<legend>Rice</legend>
+					<input type="number" placeholder="Amount in grams" v-model="riceGrams">
+					<div>
+						{{Rice}} calories per 100 grams
+					</div>
+				</fieldset>
+			</div>
+			<div class="total">
+				<fieldset>
+					<legend>Total</legend>
+					{{totalCals()}} calories
+				</fieldset>
+			</div>
+			
+		</div>
+		<button v-on:click="Reset">Reset</button>
+	</div>
+</body>
+<script>
+	Vue.createApp({
+		data() {
+			return {
+				Potato: 77,
+				Buckwheat: 343,
+				Fish: 200,
+				Chiken: 239,
+				Pork: 242,
+				Beef: 250,
+				Mutton: 294,
+				Bread: 265,
+				Spagetti: 158,
+				Rice: 130,
+				potatoGrams: "",
+				buckwheatGrams: "",
+				fishGrams: "",
+				chikenGrams: "",
+				porkGrams: "",
+				beefGrams: "",
+				muttonGrams: "",
+				breadGrams: "",
+				spagettinGrams: "",
+				riceGrams: ""
+			}
+		},
+		methods: {
+			totalCals() {
+				var totPotato = this.potatoGrams * this.Potato / 100;
+				var totBuckwheat = this.buckwheatGrams * this.Buckwheat / 100;
+				var totFish = this.fishGrams * this.Fish / 100;
+				var totChiken = this.chikenGrams * this.Chiken / 100;
+				var totPork = this.porkGrams * this.Pork / 100;
+				var totBeef = this.beefGrams * this.Beef / 100;
+				var totMutton = this.muttonGrams * this.Mutton / 100;
+				var totBread = this.breadGrams * this.Bread / 100;
+				var totSpagetti = this.spagettinGrams * this.Spagetti / 100;
+				var totRice = this.riceGrams * this.Rice / 100;
+				var total = totPotato + totBuckwheat + totFish + totChiken + totPork + totBeef + totMutton + totBread + totSpagetti + totRice;
+					return total
+			},
+			Reset () {
+				this.potatoGrams = "",
+				this.buckwheatGrams = "",
+				this.fishGrams = "",
+				this.chikenGrams = "",
+				this.porkGrams = "",
+				this.beefGrams = "",
+				this.muttonGrams = "",
+				this.breadGrams = "",
+				this.spagettinGrams = "",
+				this.riceGrams = "",
+				this.total = ""
+			}
+		}
+	}).mount('#app');
+</script>
+<style>
+.wrapper {
+	display: flex;
+}
+
+.calories div {
+		width: fit-content;
+	}
+* button {
+	margin: 7px 0px 0px 5px;
+	height: fit-content;
+}
+</style>
+</html>
