@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Изучаем Vue 3</title>
+<meta charset="utf-8" />
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="user in users">
+            <p>Имя: {{user.name}}</p>
+            <p>Возраст: {{user.age}}</p>
+        </li>
+    </ul>
+    <ul>
+        <li v-for="phone in phones">
+            <p>Model: {{phone}}</p>
+        </li>
+    </ul>
+    <div>
+        <button v-on:click='showUsers()'>
+            Press
+        </button>
+    </div>
+    <div>
+        <button v-on:click='sortPhones()'>
+            Sort
+        </button>
+    </div>
+</div>
+<script src="https://unpkg.com/vue@next"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script>
+$.ajaxSetup({async: false});
+
+Vue.createApp({
+  data() {
+    return { users: [
+                    {name:'Tom', age:22}, 
+                    {name:'Bob', age:31}, 
+                    {name: 'Sam', age:28}
+            ],
+            phones: ['Xiaomi', 'samsung', 'iPhone', 'Apple']
+    }
+  },
+  methods: {
+      showUsers() {
+        //идём на сервер за json, парсим и получаем массив, перересовываем список юзеров
+        let response = $.get('https://ironlinks.ru/nordic/users.php').responseText;
+        let users = JSON.parse(response);
+        console.log(users);
+        this.users = users;
+      },
+      sortPhones() {
+          let phonesSmall = [];
+          for (let i = 0; i < this.phones.length; i++) {
+              phonesSmall.push(this.phones[i].toLowerCase())
+          }
+          this.phones = phonesSmall;
+          this.phones.sort();
+      }
+  }
+}).mount('#app');
+</script>
+</body>
+</html> 
