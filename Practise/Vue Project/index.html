@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/Background.js"></script>
+</head>
+<body>
+    <button class="button" onclick="changeBack()"><span>Фон</span></button>
+    <div class="column_flex">
+        <div class="column">
+            <input type="text" placeholder="Add your text here.." value="Колонка №1">
+            <div class="cards">
+                <div class="card"><input type="text" placeholder="Add your text here.." value="Карточка №1"></div>
+                <div class="card"><input type="text" placeholder="Add your text here.." value="Карточка №2"></div>
+                <div class="card"><input type="text" placeholder="Add your text here.." value="Карточка №3"></div>
+                <div class="card"><input type="text" placeholder="Add your text here.." value="Карточка №4"></div>
+            </div>
+            <div class="add_card">Добавить карточку...</div>
+        </div>
+        <div class="column">
+            <input type="text" placeholder="Add your text here.." value="Колонка №1">
+            <div class="cards">
+                <div class="card"><input type="text" placeholder="Add your text here.." value="Карточка №1"></div>
+                <div class="card"><input type="text" placeholder="Add your text here.." value="Карточка №2"></div>
+                <div class="card"><input type="text" placeholder="Add your text here.." value="Карточка №3"></div>
+                <div class="card"><input type="text" placeholder="Add your text here.." value="Карточка №4"></div>
+            </div>
+            <div class="add_card">Добавить карточку...</div>
+        </div>
+        <div class="column">
+            <input type="text" placeholder="Add your text here.." value="Колонка №1">
+            <div class="cards">
+                <div class="card"><input type="text" placeholder="Add your text here.." value="Карточка №1"></div>
+                <div class="card"><input type="text" placeholder="Add your text here.." value="Карточка №2"></div>
+                <div class="card"><input type="text" placeholder="Add your text here.." value="Карточка №3"></div>
+                <div class="card"><input type="text" placeholder="Add your text here.." value="Карточка №4"></div>
+            </div>
+            <div class="add_card">Добавить карточку...</div>
+        </div>
+    </div>
+</body>
+<script>
+    let background = new Background(100, 100, "url(./img/back_1.jpg)")
+    let slideIndex = 1;
+    console.log(slideIndex);
+    function changeBack() {
+        if (slideIndex == 1) {
+            let background = new Background(100, 100, "url(./img/back_2.jpg)")
+            slideIndex = 2;
+            console.log(slideIndex);
+        }
+        else if (slideIndex == 2) {
+            let background = new Background(100, 100, "url(./img/back_3.jpg)")
+            slideIndex = 3;
+            console.log(slideIndex);
+        }
+        else if (slideIndex == 3) {
+            let background = new Background(100, 100, "url(./img/back_4.jpg)")
+            slideIndex = 4;
+            console.log(slideIndex);
+        }
+        else {
+            let background = new Background(100, 100, "url(./img/back_1.jpg)")
+            slideIndex = 1;
+            console.log(slideIndex);
+        }
+    }
+</script>
+</html>
