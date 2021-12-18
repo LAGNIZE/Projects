@@ -98,3 +98,10 @@ html, body {
     margin: 0 0 10px 10px;
     color: grey;
 }
+
+.addColumn img {
+    max-width: 150px;
+    margin: 200px 0 0 50px;
+    border-radius: 50%;
+    border: 2px solid white;
+}

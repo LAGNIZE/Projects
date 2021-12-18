@@ -7,39 +7,26 @@
     <title>Document</title>
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/Background.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
 </head>
 <body>
-    <button class="button" onclick="changeBack()"><span>Фон</span></button>
-    <div class="column_flex">
-        <div class="column">
-            <input type="text" placeholder="Add your text here.." value="Колонка №1">
-            <div class="cards">
-                <div class="card"><input type="text" placeholder="Add your text here.." value="Карточка №1"></div>
-                <div class="card"><input type="text" placeholder="Add your text here.." value="Карточка №2"></div>
-                <div class="card"><input type="text" placeholder="Add your text here.." value="Карточка №3"></div>
-                <div class="card"><input type="text" placeholder="Add your text here.." value="Карточка №4"></div>
+    <div class="board" id="board">
+        <button class="button" onclick="changeBack()"><span>Фон</span></button>
+        <div class="column_flex">
+            <div class="column" v-for="column in boardData">
+                <input type="text" placeholder="Add your text here.." v-model="column.name" v-on:input="saveBoard">
+                <div class="cards">
+                    <div class="card" v-for="card in column.cards">
+                        <input type="text" placeholder="Add your text here.." v-model="card.title" v-on:input="saveBoard">
+                    </div>
+                </div>
+                <div class="add_card" v-on:click='addCard(column)'>
+                    Добавить карточку...
+                </div>
             </div>
-            <div class="add_card">Добавить карточку...</div>
-        </div>
-        <div class="column">
-            <input type="text" placeholder="Add your text here.." value="Колонка №2">
-            <div class="cards">
-                <div class="card"><input type="text" placeholder="Add your text here.." value="Карточка №1"></div>
-                <div class="card"><input type="text" placeholder="Add your text here.." value="Карточка №2"></div>
-                <div class="card"><input type="text" placeholder="Add your text here.." value="Карточка №3"></div>
-                <div class="card"><input type="text" placeholder="Add your text here.." value="Карточка №4"></div>
+            <div class="addColumn">
+                <img src="./img/plus.png" alt="" v-on:click="addColumn(), saveBoard()">
             </div>
-            <div class="add_card">Добавить карточку...</div>
-        </div>
-        <div class="column">
-            <input type="text" placeholder="Add your text here.." value="Колонка №3">
-            <div class="cards">
-                <div class="card"><input type="text" placeholder="Add your text here.." value="Карточка №1"></div>
-                <div class="card"><input type="text" placeholder="Add your text here.." value="Карточка №2"></div>
-                <div class="card"><input type="text" placeholder="Add your text here.." value="Карточка №3"></div>
-                <div class="card"><input type="text" placeholder="Add your text here.." value="Карточка №4"></div>
-            </div>
-            <div class="add_card">Добавить карточку...</div>
         </div>
     </div>
 </body>
@@ -69,5 +56,51 @@
             console.log(slideIndex);
         }
     }
+    let jsonData = []
+    if (localStorage.getItem("data") !== null) {
+        jsonData = JSON.parse(localStorage.getItem("data"))
+    }
+    let board = Vue.createApp({
+        data(){
+            return {
+                boardData: jsonData
+            }
+        },
+        methods: {
+            /* - добавляет карточку в первую колонку по нажатию на Add в любой колонке
+            addCard() {
+                this.boardData[0].cards.push(
+                    {
+                        title: "",
+                        description: ""
+                    }
+                )
+            }*/
+            addCard(column) {
+                column.cards.push(
+                    {
+                        title: "",
+                        description: ""
+                    }
+                )
+            },
+            addColumn() {
+                this.boardData.push (
+                    {
+                        name: "New column",
+                        cards: []
+                    }
+                )
+            },
+            saveBoard() {
+                // делаем из наших данных JSON
+                let json = JSON.stringify(this.boardData)
+                // шарим данные в локал сторадж
+                localStorage.setItem("data",json)
+                console.log(localStorage.getItem("data"))
+            }
+        }
+    })
+    board.mount("#board");
 </script>
 </html>
