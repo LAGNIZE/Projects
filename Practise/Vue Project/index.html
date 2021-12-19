@@ -17,43 +17,52 @@
                 <input type="text" placeholder="Add your text here.." v-model="column.name" v-on:input="saveBoard">
                 <div class="cards">
                     <div class="card" v-for="card in column.cards">
-                        <input type="text" placeholder="Add your text here.." v-model="card.title" v-on:input="saveBoard">
+                        <input type="text" v-on:dblclick="openModal(card)" placeholder="Add your text here.." v-model="card.title" v-on:input="saveBoard">
+								<div class="deleteCard" v-on:click="deleteCard(column, card), saveBoard()">&#10006;</div>
+								<div class="ifDescription" v-if="card.description != ''">&#9776;</div>
                     </div>
                 </div>
                 <div class="add_card" v-on:click='addCard(column)'>
                     Добавить карточку...
                 </div>
+					 <div class="deleteColumn" v-on:click="deleteColumn(boardData, column)">&#10006;</div>
             </div>
             <div class="addColumn">
-                <img src="./img/plus.png" alt="" v-on:click="addColumn(), saveBoard()">
+					<div class="newColumn" v-on:click="addColumn(), saveBoard()">
+						&#10010;
+					</div>
             </div>
         </div>
+		  <div class="modal-kit" v-if="visible">
+				<div class="card-modal" >
+					<input class="modalTitle" v-model="modalTitle" type="text">
+					<div class="modalDescription">
+						<textarea v-model="modalDescription"></textarea>
+					</div>
+					<div class="modalClose" v-on:click="closeModal()">&#10006;</div>
+				</div>
+		  </div>
     </div>
 </body>
 <script>
     let background = new Background(100, 100, "url(./img/back_1.jpg)")
     let slideIndex = 1;
-    console.log(slideIndex);
     function changeBack() {
         if (slideIndex == 1) {
             let background = new Background(100, 100, "url(./img/back_2.jpg)")
             slideIndex = 2;
-            console.log(slideIndex);
         }
         else if (slideIndex == 2) {
             let background = new Background(100, 100, "url(./img/back_3.jpg)")
             slideIndex = 3;
-            console.log(slideIndex);
         }
         else if (slideIndex == 3) {
             let background = new Background(100, 100, "url(./img/back_4.jpg)")
             slideIndex = 4;
-            console.log(slideIndex);
         }
         else {
             let background = new Background(100, 100, "url(./img/back_1.jpg)")
             slideIndex = 1;
-            console.log(slideIndex);
         }
     }
     let jsonData = []
@@ -63,7 +72,11 @@
     let board = Vue.createApp({
         data(){
             return {
-                boardData: jsonData
+					visible: false,
+               boardData: jsonData,
+					modalTitle: "",
+					modalDescription: "",
+					currentCard: null,
             }
         },
         methods: {
@@ -96,9 +109,35 @@
                 // делаем из наших данных JSON
                 let json = JSON.stringify(this.boardData)
                 // шарим данные в локал сторадж
-                localStorage.setItem("data",json)
-                console.log(localStorage.getItem("data"))
-            }
+                localStorage.setItem("data", json)
+            },
+				deleteCard(column, card) {
+					let number = column.cards.indexOf(card)
+					// вырезаем элемент из массива
+					column.cards.splice(number, 1)
+					// сохранение, альтернатива
+					// this.saveBoard()
+				},
+				deleteColumn(boardData, column) {
+					let number = boardData.indexOf(column)
+					boardData.splice(number, 1)
+					this.saveBoard()
+				}, 
+				openModal(card) {
+					this.visible = true
+					// заполняем модалку данными из карточки
+					this.modalTitle = card.title
+					this.modalDescription = card.description
+					// запоминаем текущую карточку
+					this.currentCard = card
+				}, 
+				closeModal() {
+					this.visible = false
+					// записываем данные в карточку
+					this.currentCard.title = this.modalTitle
+					this.currentCard.description = this.modalDescription
+					this.saveBoard()
+				}
         }
     })
     board.mount("#board");

@@ -63,6 +63,7 @@ html, body {
     margin: 200px 0 0 50px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     transition-duration: 0.4s;
+	 position: relative;
 }
 
 .column:hover {
@@ -86,6 +87,7 @@ html, body {
     background-color: white;
     border-radius: 5%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	 position: relative;
 }
 
 .card textarea {
@@ -99,9 +101,69 @@ html, body {
     color: grey;
 }
 
-.addColumn img {
-    max-width: 150px;
-    margin: 200px 0 0 50px;
-    border-radius: 50%;
-    border: 2px solid white;
+.deleteCard {
+	margin: 0 5px 0 0;
+	position: absolute;
+	top: 0;
+	right: 0;
+	visibility: hidden;
+}
+
+.card:hover .deleteCard {
+	visibility: visible;
+}
+
+.deleteColumn {
+	margin: 0 5px 0 0;
+	position: absolute;
+	top: 0;
+	right: 0;
+	visibility: hidden;
+}
+
+.column:hover .deleteColumn {
+	visibility: visible;
+}
+
+.modal-kit {
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.7);
+	height: 100vh;
+	width: 100%	;
+}
+
+.card-modal {
+	width: 500px;
+	min-height: 500px;
+	background-color: azure;
+	border-radius: 20px;
+	position: relative;
+}
+
+.modalClose {
+	position: absolute;
+	margin: 5px 10px 0 0;
+	top: 0;
+	right: 0;
+}
+
+.modalTitle {
+	margin: 10px 0 10px 10px;
+}
+
+.modalDescription {
+	margin: 10px 10px 0 10px;
+}
+
+.ifDescription {
+	margin: 0 0 0 5px;
+}
+
+.newColumn {
+	margin: 225px 0 0 50px;
+	color: white;
+	border: 2px solid white;
+	border-radius: 50%;
 }
