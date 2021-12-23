@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/Background.js"></script>
     <script src="https://unpkg.com/vue@next"></script>
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 </head>
 <body>
     <div class="board" id="board">
@@ -40,11 +41,21 @@
 						<textarea v-model="modalDescription"></textarea>
 					</div>
 					<div class="modalClose" v-on:click="closeModal()">&#10006;</div>
+					<div class="reminder">
+						<input type="datetime-local" class="date" v-model="remindDate" v-on:input="sendRemind()">
+						<div>Remind on: {{remindDate}}</div>
+						<div>Current date: {{currentDate}}</div>
+					</div>
 				</div>
 		  </div>
     </div>
 </body>
 <script>
+	 function ISODateString(d){
+ 		function pad(n){return n<10 ? '0'+n : n}
+ 			return d.getFullYear()+'-'+ pad(d.getMonth()+1)+'-'+ pad(d.getDate())+'T'+ pad(d.getHours())+':'+ pad(d.getMinutes())}
+	 let d = new Date();
+
     let background = new Background(100, 100, "url(./img/back_1.jpg)")
     let slideIndex = 1;
     function changeBack() {
@@ -77,6 +88,8 @@
 					modalTitle: "",
 					modalDescription: "",
 					currentCard: null,
+					remindDate: "",
+					currentDate: ISODateString(d)
             }
         },
         methods: {
@@ -136,7 +149,17 @@
 					// записываем данные в карточку
 					this.currentCard.title = this.modalTitle
 					this.currentCard.description = this.modalDescription
+					console.log(this.modalTitle)
 					this.saveBoard()
+				},
+				sendRemind() {
+					let sendText = this.modalTitle
+					setInterval(function () {
+						let url = "https://api.telegram.org/bot2023002074:AAFEqzEOTQSbWVqyDiEGemXpAmMYTj3V8qU/sendMessage?chat_id=154685689" + "&text=Reminder: " + sendText
+						if (this.remindDate == this.currentDate) {
+							$.get(url)
+						}
+	 				}, 5000)
 				}
         }
     })

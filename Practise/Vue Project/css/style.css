@@ -167,3 +167,7 @@ html, body {
 	border: 2px solid white;
 	border-radius: 50%;
 }
+
+.reminder {
+	margin: 10px 10px 0 10px;
+}
