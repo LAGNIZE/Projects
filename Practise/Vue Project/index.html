@@ -155,7 +155,7 @@
 				sendRemind() {
 					let sendText = this.modalTitle
 					setInterval(function () {
-						let url = "https://api.telegram.org/bot2023002074:AAFEqzEOTQSbWVqyDiEGemXpAmMYTj3V8qU/sendMessage?chat_id=154685689" + "&text=Reminder: " + sendText
+						let url = "https://api.telegram.org/bot2023002074:AAFEqzEOTQSbWVqyDiEGemXpAmMYTj3V8qU/sendMessage?chat_id=" + chatid + "&text=Reminder: " + sendText
 						if (this.remindDate == this.currentDate) {
 							$.get(url)
 						}
