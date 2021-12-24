@@ -149,14 +149,16 @@
 					// записываем данные в карточку
 					this.currentCard.title = this.modalTitle
 					this.currentCard.description = this.modalDescription
-					console.log(this.modalTitle)
 					this.saveBoard()
 				},
 				sendRemind() {
 					let sendText = this.modalTitle
+					let count = 0
 					setInterval(function () {
+						console.log(this.count)
 						let url = "https://api.telegram.org/bot2023002074:AAFEqzEOTQSbWVqyDiEGemXpAmMYTj3V8qU/sendMessage?chat_id=154685689" + "&text=Reminder: " + sendText
-						if (this.remindDate == this.currentDate) {
+						if (this.remindDate == this.currentDate & count == 0) {
+							count++
 							$.get(url)
 						}
 	 				}, 5000)
