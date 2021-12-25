@@ -18,9 +18,7 @@
                 <input type="text" placeholder="Add your text here.." v-model="column.name" v-on:input="saveBoard">
                 <div class="cards">
                     <div class="card" v-for="card in column.cards">
-                        <input type="text" v-on:dblclick="openModal(card)" placeholder="Add your text here.." v-model="card.title" v-on:input="saveBoard">
-								<div class="deleteCard" v-on:click="deleteCard(column, card), saveBoard()">&#10006;</div>
-								<div class="ifDescription" v-if="card.description != ''">&#9776;</div>
+                        <card :card="card" :column="column" :board="boardData"></card>
                     </div>
                 </div>
                 <div class="add_card" v-on:click='addCard(column)'>
@@ -42,20 +40,17 @@
 					</div>
 					<div class="modalClose" v-on:click="closeModal()">&#10006;</div>
 					<div class="reminder">
-						<input type="datetime-local" class="date" v-model="remindDate" v-on:input="sendRemind()">
+						<input type="datetime-local" class="date" v-model="remindDate">
 						<div>Remind on: {{remindDate}}</div>
-						<div>Current date: {{currentDate}}</div>
 					</div>
 				</div>
 		  </div>
     </div>
 </body>
 <script>
-	 function ISODateString(d){
+	function ISODateString(currentDate){
  		function pad(n){return n<10 ? '0'+n : n}
- 			return d.getFullYear()+'-'+ pad(d.getMonth()+1)+'-'+ pad(d.getDate())+'T'+ pad(d.getHours())+':'+ pad(d.getMinutes())}
-	 let d = new Date();
-
+ 			return currentDate.getFullYear()+'-'+ pad(currentDate.getMonth()+1)+'-'+ pad(currentDate.getDate())+'T'+ pad(currentDate.getHours())+':'+ pad(currentDate.getMinutes())}
     let background = new Background(100, 100, "url(./img/back_1.jpg)")
     let slideIndex = 1;
     function changeBack() {
@@ -77,6 +72,26 @@
         }
     }
     let jsonData = []
+    /*setInterval(function() {
+        // заглядывать в LocalStorage, доставать все карточки, в цикле бежать уведомлять о тех карточках у которых есть время
+        jsonData = JSON.parse(localStorage.getItem("data"))
+        for (i in jsonData) {
+            // для каждой карточки в i-й колонке, boardData[i] - колонка
+            for (j in jsonData[i].cards) {
+                let card = jsonData[i].cards[j]
+                let currentDate = new Date()
+                currentDate = ISODateString(currentDate)
+                if (card.date == currentDate) {
+                    let url = "https://api.telegram.org/bot2023002074:AAFEqzEOTQSbWVqyDiEGemXpAmMYTj3V8qU/sendMessage?chat_id=154685689" + "&text=Reminder: " + card.title
+                    $.get(url)
+                    jsonData[i].cards[j].date = ""
+                }
+            }
+        }
+        // сохраняем в LocalStorage новую информацию
+        let jsonToSave = JSON.stringify(jsonData)
+        localStorage.setItem("data", jsonToSave)
+    }, 1000)*/
     if (localStorage.getItem("data") !== null) {
         jsonData = JSON.parse(localStorage.getItem("data"))
     }
@@ -84,24 +99,14 @@
         data(){
             return {
 					visible: false,
-               boardData: jsonData,
+                    boardData: jsonData,
 					modalTitle: "",
 					modalDescription: "",
 					currentCard: null,
-					remindDate: "",
-					currentDate: ISODateString(d)
+					remindDate: ""
             }
         },
         methods: {
-            /* - добавляет карточку в первую колонку по нажатию на Add в любой колонке
-            addCard() {
-                this.boardData[0].cards.push(
-                    {
-                        title: "",
-                        description: ""
-                    }
-                )
-            }*/
             addCard(column) {
                 column.cards.push(
                     {
@@ -124,47 +129,64 @@
                 // шарим данные в локал сторадж
                 localStorage.setItem("data", json)
             },
-				deleteCard(column, card) {
-					let number = column.cards.indexOf(card)
-					// вырезаем элемент из массива
-					column.cards.splice(number, 1)
-					// сохранение, альтернатива
-					// this.saveBoard()
-				},
-				deleteColumn(boardData, column) {
-					let number = boardData.indexOf(column)
-					boardData.splice(number, 1)
-					this.saveBoard()
-				}, 
-				openModal(card) {
-					this.visible = true
-					// заполняем модалку данными из карточки
-					this.modalTitle = card.title
-					this.modalDescription = card.description
-					// запоминаем текущую карточку
-					this.currentCard = card
-				}, 
-				closeModal() {
-					this.visible = false
-					// записываем данные в карточку
-					this.currentCard.title = this.modalTitle
-					this.currentCard.description = this.modalDescription
-					this.saveBoard()
-				},
-				sendRemind() {
-					let sendText = this.modalTitle
-					let count = 0
-					setInterval(function () {
-						console.log(this.count)
-						let url = "https://api.telegram.org/bot2023002074:AAFEqzEOTQSbWVqyDiEGemXpAmMYTj3V8qU/sendMessage?chat_id=154685689" + "&text=Reminder: " + sendText
-						if (this.remindDate == this.currentDate & count == 0) {
-							count++
-							$.get(url)
-						}
-	 				}, 5000)
-				}
+			deleteCard(column, card) {
+				let number = column.cards.indexOf(card)
+				// вырезаем элемент из массива
+				column.cards.splice(number, 1)
+				// сохранение, альтернатива
+				this.saveBoard()
+			},
+			deleteColumn(boardData, column) {
+				let number = boardData.indexOf(column)
+				boardData.splice(number, 1)
+				this.saveBoard()
+			}, 
+			openModal(card) {
+				this.visible = true
+				// заполняем модалку данными из карточки
+				this.modalTitle = card.title
+				this.modalDescription = card.description
+				// запоминаем текущую карточку
+				this.currentCard = card
+                this.remindDate = card.date
+			}, 
+			closeModal() {
+				this.visible = false
+				// записываем данные в карточку
+				this.currentCard.title = this.modalTitle
+				this.currentCard.description = this.modalDescription
+                // создаем строку date и записываем туда remindDate
+                this.currentCard.date = this.remindDate
+				this.saveBoard()
+			},
         }
     })
+
+    // создаём компонент карточки
+    board.component("card",{
+        props: ["card","column","board"],
+        template : `
+            <input type="text" v-on:dblclick="openModal(card)" placeholder="Add your text here.." v-model="card.title" v-on:input="saveBoard">
+		    <div class="deleteCard" v-on:click="deleteCard(column, card), saveBoard()">&#10006;</div>
+		    <div class="ifDescription" v-if="card.description != ''">&#9776;</div>
+            `,
+            methods: {
+                deleteCard(column, card) {
+				let number = column.cards.indexOf(card)
+				// вырезаем элемент из массива
+				column.cards.splice(number, 1)
+				// сохранение, альтернатива
+				// this.saveBoard()
+			    },
+                saveBoard() {
+                // делаем из наших данных JSON
+                let json = JSON.stringify(this.board)
+                // шарим данные в локал сторадж
+                localStorage.setItem("data", json)
+                }
+            }
+    })
+
     board.mount("#board");
 </script>
 </html>
