@@ -63,7 +63,7 @@ html, body {
     margin: 200px 0 0 50px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     transition-duration: 0.4s;
-	 position: relative;
+	position: relative;
 }
 
 .column:hover {
@@ -87,7 +87,7 @@ html, body {
     background-color: white;
     border-radius: 5%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	 position: relative;
+	position: relative;
 }
 
 .card textarea {
@@ -139,6 +139,8 @@ html, body {
 	min-height: 500px;
 	background-color: azure;
 	border-radius: 20px;
+    top: 20%;
+	left: 30%;
 	position: relative;
 }
 
@@ -158,14 +160,17 @@ html, body {
 }
 
 .ifDescription {
-	margin: 0 0 0 5px;
+	margin: 0 5px 0 5px;
 }
 
 .newColumn {
-	margin: 225px 0 0 50px;
+	margin: 210px 0 0 50px;
 	color: white;
-	border: 2px solid white;
-	border-radius: 50%;
+    font-size: 40px;
+}
+
+.newColumn:hover {
+    color: silver;
 }
 
 .reminder {

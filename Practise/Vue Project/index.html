@@ -18,11 +18,13 @@
                 <input type="text" placeholder="Add your text here.." v-model="column.name" v-on:input="saveBoard">
                 <div class="cards">
                     <div class="card" v-for="card in column.cards">
-                        <card :card="card" :column="column" :board="boardData"></card>
+                        <div v-on:dblclick="openModal(card)">
+                            <card :card="card" :column="column" :board="boardData"></card>
+                        </div>
                     </div>
                 </div>
                 <div class="add_card" v-on:click='addCard(column)'>
-                    Добавить карточку...
+                    &#10010 Добавить карточку
                 </div>
 					 <div class="deleteColumn" v-on:click="deleteColumn(boardData, column)">&#10006;</div>
             </div>
@@ -161,14 +163,16 @@
 			},
         }
     })
-
     // создаём компонент карточки
     board.component("card",{
-        props: ["card","column","board"],
+        props: ["card", "column", "board"],
         template : `
-            <input type="text" v-on:dblclick="openModal(card)" placeholder="Add your text here.." v-model="card.title" v-on:input="saveBoard">
+            <input type="text" placeholder="Add your text here.." v-model="card.title" v-on:input="saveBoard">
 		    <div class="deleteCard" v-on:click="deleteCard(column, card), saveBoard()">&#10006;</div>
-		    <div class="ifDescription" v-if="card.description != ''">&#9776;</div>
+            <div style="display: flex; justify-content: space-between">
+		    <div class="ifDescription" v-if="card.description">&#9776;</div>
+            <div class="ifDescription" v-if="card.date">&#9733;</div>
+            </div>
             `,
             methods: {
                 deleteCard(column, card) {
@@ -183,10 +187,18 @@
                 let json = JSON.stringify(this.board)
                 // шарим данные в локал сторадж
                 localStorage.setItem("data", json)
-                }
+                },
+                openModal(card) {
+				this.visible = true
+				// заполняем модалку данными из карточки
+				this.modalTitle = card.title
+				this.modalDescription = card.description
+				// запоминаем текущую карточку
+				this.currentCard = card
+                this.remindDate = card.date
+			    }
             }
     })
-
     board.mount("#board");
 </script>
 </html>
