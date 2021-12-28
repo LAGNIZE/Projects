@@ -43,7 +43,10 @@
 					<div class="modalClose" v-on:click="closeModal()">&#10006;</div>
 					<div class="reminder">
 						<input type="datetime-local" class="date" v-model="remindDate">
-						<div>Remind on: {{remindDate}}</div>
+						<div style="margin: 10px 0 10px 0">Remind on: {{remindDate}}</div>
+						<div v-if="remindVisible">
+							<button v-on:click="deleteRemind">Delete Remind</button>
+						</div>	
 					</div>
 				</div>
 		  </div>
@@ -105,7 +108,8 @@
 					modalTitle: "",
 					modalDescription: "",
 					currentCard: null,
-					remindDate: ""
+					remindDate: "",
+					remindVisible: false
             }
         },
         methods: {
@@ -150,7 +154,7 @@
 				this.modalDescription = card.description
 				// запоминаем текущую карточку
 				this.currentCard = card
-                this.remindDate = card.date
+         	this.remindDate = card.date
 			}, 
 			closeModal() {
 				this.visible = false
@@ -158,9 +162,18 @@
 				this.currentCard.title = this.modalTitle
 				this.currentCard.description = this.modalDescription
                 // создаем строку date и записываем туда remindDate
-                this.currentCard.date = this.remindDate
+            this.currentCard.date = this.remindDate
+				if (this.remindDate !== undefined) {
+					this.remindVisible = true
+				}
+				else { 
+					this.remindVisible = false
+				}
 				this.saveBoard()
 			},
+			deleteRemind() {
+				this.remindDate = undefined
+			}
         }
     })
     // создаём компонент карточки
@@ -170,8 +183,8 @@
             <input type="text" placeholder="Add your text here.." v-model="card.title" v-on:input="saveBoard">
 		    <div class="deleteCard" v-on:click="deleteCard(column, card), saveBoard()">&#10006;</div>
             <div style="display: flex; justify-content: space-between">
-		    <div class="ifDescription" v-if="card.description">&#9776;</div>
-            <div class="ifDescription" v-if="card.date">&#9733;</div>
+		    <div class="ifDescription" v-if="card.date">&#9733;</div>
+            <div class="ifDescription" v-if="card.description">...</div>
             </div>
             `,
             methods: {

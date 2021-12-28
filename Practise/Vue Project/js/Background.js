@@ -5,6 +5,7 @@ class Background {
         this.dom.style.height = height + '%';
         this.dom.style.background = background;
         this.dom.style.backgroundSize = "cover";
+		  this.dom.style.transition = "background 2s linear"
         this.width = width;
         this.height = height;
     }
