@@ -183,8 +183,8 @@
             <input type="text" placeholder="Add your text here.." v-model="card.title" v-on:input="saveBoard">
 		    <div class="deleteCard" v-on:click="deleteCard(column, card), saveBoard()">&#10006;</div>
             <div style="display: flex; justify-content: space-between">
-		    <div class="ifDescription" v-if="card.date">&#9733;</div>
-            <div class="ifDescription" v-if="card.description">...</div>
+					<div class="ifDescription" v-if="card.description">&#9776;</div>
+					<div class="ifDescription" v-if="card.date">&#9733;</div>
             </div>
             `,
             methods: {
