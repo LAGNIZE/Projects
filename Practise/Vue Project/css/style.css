@@ -15,9 +15,7 @@ html, body {
     width: 60px;
     transition: all 0.5s;
     cursor: pointer;
-    position: absolute;
-    top: 5px;
-    right: 5px;
+
   }
 
 .button:hover {
@@ -60,7 +58,7 @@ html, body {
     height: fit-content;
     background-color: #e7e7e7;
     border-radius: 5%;
-    margin: 200px 0 0 50px;
+    margin: 50px 0 0 50px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     transition-duration: 0.4s;
 	position: relative;
@@ -107,6 +105,7 @@ html, body {
 	top: 0;
 	right: 0;
 	visibility: hidden;
+	font-size: 12px;
 }
 
 .card:hover .deleteCard {
@@ -119,6 +118,7 @@ html, body {
 	top: 0;
 	right: 0;
 	visibility: hidden;
+	font-size: 14px;
 }
 
 .column:hover .deleteColumn {
@@ -165,7 +165,7 @@ html, body {
 }
 
 .newColumn {
-	margin: 210px 0 0 50px;
+	margin: 120px 0 0 50px;
 	color: white;
     font-size: 40px;
 }
@@ -176,4 +176,35 @@ html, body {
 
 .reminder {
 	margin: 10px 10px 0 10px;
+}
+
+.boardTitle {
+	font-family: 'Licorice', cursive;
+	color: white;
+	font-size: 100px;
+	text-align: center;
+	font-weight: bold;
+	text-shadow: 5px 5px black;
+	background-color: rgba(0, 0, 0, 0.5);
+	padding-top: 20px;
+}
+
+.social {
+	width: 80px;
+	height: fit-content;
+	padding-top: 5px;
+}
+
+.social img {
+	max-width: 100%;
+}
+
+.social img:hover {
+	max-width: 130%;
+    box-shadow: 0 0 15px  white;
+    transition: all 0.5s ease;
+}
+
+.social div:not(:last-child) {
+	margin-right: 10px;
 }

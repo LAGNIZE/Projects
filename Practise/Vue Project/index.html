@@ -9,10 +9,23 @@
     <script src="./js/Background.js"></script>
     <script src="https://unpkg.com/vue@next"></script>
 	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	 <link href="https://fonts.googleapis.com/css2?family=Licorice&display=swap" rel="stylesheet">
 </head>
 <body>
+	<div style="display: flex; justify-content: space-between; flex-direction: row-reverse; margin: 10px 10px 10px 10px;">
+		<div>
+			<button class="button" onclick="changeBack()"><span>Фон</span></button>
+		</div>
+		<div class="social" style="display: flex;">
+			<div><img src="./img/instagram.png" alt=""></div>
+			<div><img src="./img/facebook.png" alt=""></div>
+			<div><img src="./img/youtube.png" alt=""></div>
+		</div>
+	 </div>
+	<div class="boardTitle">
+			Nordic Task Board
+	</div>
     <div class="board" id="board">
-        <button class="button" onclick="changeBack()"><span>Фон</span></button>
         <div class="column_flex">
             <div class="column" v-for="column in boardData">
                 <input type="text" placeholder="Add your text here.." v-model="column.name" v-on:input="saveBoard">
