@@ -1,0 +1,38 @@
+/* Указываем box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+/* Выставляем основные настройки по-умолчанию для body */
+html, 
+body {
+  height: 100%;
+  line-height: 1.5;
+}
+
+/* Удаляем стандартную стилизацию для всех ul и il*/
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+a, a:hover, a:active, a:visited, a:focus {
+	text-decoration: none;
+	color: white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: inherit;
+	font-size: inherit;
+}
