@@ -1,0 +1,22 @@
+.flex-box {
+    display: flex;
+}
+.flex-wrap {
+    flex-wrap: wrap;
+}
+.flex-vertical-center {
+    align-items: center;
+}
+.to-center {
+    margin: 0 auto;
+}
+
+.responsive-img {
+    width: 100%;
+    height: auto;
+}
+
+a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: inherit;
+}
