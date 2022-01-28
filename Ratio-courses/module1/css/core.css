@@ -4,6 +4,9 @@
 .flex-wrap {
     flex-wrap: wrap;
 }
+.flex-nowrap {
+    flex-wrap: nowrap;
+}
 .flex-vertical-center {
     align-items: center;
 }

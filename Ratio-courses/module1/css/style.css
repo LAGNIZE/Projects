@@ -3,10 +3,10 @@
 body {
     color: #4B5D68;
     font-family: 'Ubuntu', sans-serif;
+    overflow-x: hidden;
 }
 
 .wrapper {
-    background-color: ghostwhite;
     width: 70%;
     margin: 0 auto;
 }
@@ -84,7 +84,7 @@ header {
 }
 
 .main__whoweare {
-    margin: 100px 0 0 0;
+    margin: 170px 0 0 0;
     background: rgba(240, 99, 184, 0.15);
     border-radius: 50px;    
 }
@@ -212,3 +212,100 @@ header {
     top: 73px;
 }
 
+.items__btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 160%;
+    color: #212353;
+}
+
+.main__testimonials {
+    margin: 150px 0 150px 0;
+    background: #9C69E2;
+    border-radius: 50px;
+}
+
+.testimonials__title {
+    padding: 110px 0 90px 95px;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 130%;
+    color: #FFFFFF;
+    width: fit-content;
+}
+
+.testimonials__slides {
+    margin: 0 0 0 95px;
+}
+
+.slide__first {
+    width: 645px;
+    height: 330px;
+    background-color: white;
+    box-shadow: 0 20px 0 rgba(156, 0, 226, .3);
+    border-radius: 20px;
+    margin: 0 20px 130px 0;
+}
+
+.box__title {
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 160%;
+    color: #212353;
+}
+
+.box__text a {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 160%;
+    color: #9C69E2;
+}
+
+.box__description {
+    width: 45%;
+    font-size: 18px;
+    line-height: 180%;
+    color: #4B5D68;
+    margin: 20px 0 0 0;
+}
+
+.box__text {
+    margin: 20px 0 0 30px;
+}
+
+.slide__box {
+    padding: 60px 0 0 70px;
+    flex-shrink: 0;
+    width: 1000px;
+}
+
+.slide__second {
+    width: 400px;
+    height: 330px;
+    background-color: white;
+    box-shadow: 0 20px 0 rgba(126, 53, 160, 0.1);
+    border: 1px solid #9C69E2;
+    border-radius: 20px;
+    margin: 0 20px 130px 0;
+}
+
+.slide__third {
+    width: 400px;
+    height: 330px;
+    background-color: white;
+    box-shadow: 0 20px 0 rgba(126, 53, 160, 0.1);
+    border: 1px solid #9C69E2;
+    border-radius: 20px;
+    margin: 0 20px 130px 0;
+}
+
+footer {
+    width: auto;
+    height: 480px;
+    border: 1px black solid;
+}
