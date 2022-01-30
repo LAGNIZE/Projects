@@ -129,7 +129,7 @@ header {
 }
 
 .features__items {
-    justify-content: center;
+    justify-content: right;
     margin: 100px 0 0 0;
     border-radius: 50px;
 }
@@ -139,7 +139,7 @@ header {
 }
 
 .items__search {
-    background-image: url(/img/search.png);
+    background-image: url(../img/search.png);
     background-repeat: no-repeat;
     width: 442px;
     height: 358px;
@@ -147,7 +147,7 @@ header {
 }
 
 .items__access {
-    background-image: url(/img/access.png);
+    background-image: url(../img/access.png);
     background-repeat: no-repeat;
     width: 442px;
     height: 358px;
@@ -156,7 +156,7 @@ header {
 }
 
 .items__print {
-    background-image: url(/img/print.png);
+    background-image: url(../img/print.png);
     background-repeat: no-repeat;
     width: 442px;
     height: 358px;
@@ -164,7 +164,7 @@ header {
 }
 
 .items__security {
-    background-image: url(/img/security.png);
+    background-image: url(../img/security.png);
     background-repeat: no-repeat;
     width: 442px;
     height: 358px;
