@@ -18,7 +18,9 @@
     <div class="wrapper">
         <header>
             <div class="header__nav flex-box">
-                <img src="./img/Logo.png" class="nav__logo responsive-img" alt="logo">
+                <a href="./index.html">
+                    <img src="./img/Logo.png" class="nav__logo" alt="logo">
+                </a>
                 <div class="nav__items flex-box flex-vertical-center">
                     <a href="#about">About</a>
                     <a href="#help">Help</a>
@@ -34,16 +36,18 @@
                     tested for security, so you can store your data here
                     safely but not be afraid of being stolen by others.
                 </div>
-                <button class="headline__btn">
-                    Learn more
-                </button>
+                <a href="#feautures">
+                    <button class="headline__btn">
+                        Learn more
+                    </button>
+                </a>
                 <div class="headline__img">
                     <img src="./img/headline_img.png" alt="headline__img">
                 </div>
             </div>
         </header>
         <main>
-            <div class="main__whoweare">
+            <div id="about" class="main__whoweare">
                 <div class="whoweare__items flex-box">
                     <div class="items_img">
                         <img src="./img/whoweare.png" alt="whoweare">
@@ -59,7 +63,7 @@
                     </div>
                 </div>
             </div>
-            <div class="main__features">
+            <div id="feautures" class="main__features">
                 <div class="features__title">
                     Features
                 </div>
@@ -179,8 +183,51 @@
                 </div>
             </div>
         </main>
+    </div>
+    <hr>
+    <div class="wrapper">
         <footer>
-            
+            <div id="help" class="footer__container flex-box">
+                <div class="container__item">
+                    <div class="item__logo flex-box">
+                        <div class="logo__img">
+                            <img src="./img/Logo.png" alt="">
+                        </div>
+                        <div class="logo__text">
+                            DataWarehouse
+                        </div>
+                    </div>
+                    <div class="item__title">
+                        Warehouse Society, 234 <br>
+                        Bahagia Ave Street PRBW 29281
+
+                    </div>
+                    <div class="item__description">
+                        info@warehouse.project <br>
+                        1-232-3434 (Main)
+                    </div>
+                    <div class="item__copyright">
+                        © Datawarehouse™, 2020. All rights reserved. <br>
+                        Company Registration Number: 21479524.
+                    </div>
+                </div>
+                <div class="container__item">
+                    <div class="item__title" style="margin: 0 0 10px 20px;">
+                        Social Media
+                    </div>
+                    <div class="item__container flex-box">
+                        <div class="container__social">
+
+                        </div>
+                        <div class="container__social">
+
+                        </div>
+                        <div class="container__social">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </footer>
     </div>
 </body>
