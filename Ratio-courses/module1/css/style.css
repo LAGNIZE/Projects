@@ -558,5 +558,10 @@ hr {
 .container__social img {
     display: block;
     margin: 0 auto;
-    padding: 15px 0 0 0;
+    padding: 16px 0 0 0;
+}
+
+.container__social:hover {
+    background:black;
+    opacity: 0.3;
 }
