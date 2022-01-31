@@ -173,7 +173,7 @@ header {
     line-height: 130%;
     color: #212353;
     width: 30%;
-    margin: 0;
+    margin: 0 auto;
 }
 
 @media screen and (max-width: 400px) {
