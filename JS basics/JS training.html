@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    'use strict'
+    const myFoo = (a, b) => {
+        let c
+        a = a + 1
+        c = a + b
+        return c
+    }
+    console.log(myFoo(5, 6))
+
+    setTimeout(() => {
+        console.log('hey')
+    }, 1000)
+
+    function mult(value, multip = 2) {
+        return value * multip
+    }
+    console.log(mult(10))
+
+    const arrFoo = (value, multip = 3) => value * multip
+    console.log(arrFoo(20))
+
+    const newPost = (post, addedAt = Date()) => ({
+        ...post,
+        addedAt,
+    })
+
+    const secPost = (post, addedAt = Date()) => {
+        post.addedAt = addedAt
+        return post
+    }
+
+    const firstPost = {
+        id: 1,
+        author: 'Alex',
+    }
+
+    const secondPost = {
+        id: 1,
+        author: 'Serg',
+    }
+
+    console.log(newPost(firstPost))
+    console.log(secPost(secondPost))
+
+    //обрабокта ошибок
+    const errFoo = () => {
+        throw new Error('This is Error')
+    }
+    //errFoo() // выполенние кода остановится
+    //console.log('Cont') // не увидим
+
+    // TRY/CATCH - тесты
+    try {
+        errFoo()
+        // выполнения блока
+    } catch (error) {
+        console.error(error)
+        console.log(error.message)
+        // этот блок выполняется в случае возникновения ошибок в блоке try
+    }
+    console.log('Cont')
+
+    const myArray = [1, 2, 3, 10]
+    const res = myArray.forEach(el => console.log(el * 2))
+    console.log(res) // forEach ничего не возвращает
+        
+    const myArray2 = [1, 2, 3, 10]
+    const res2 = myArray2.map(el => el * 3) // стрелочная функция с неявным вызовом
+    console.log(res2) // map вернет массив той же длины что оригинальный
+
+    const myArray3 = [1, 2, 3, 10]
+    const res3 = myArray3.map((el) => { // стрелочная функция с явным вызовом, return
+        return el * 3
+    })
+    console.log(res3)
+
+    const myArray4 = [1, 2, 3, 10]
+    const res4 = myArray4.map(function (el) { //анонимное функц выражение
+        return el * 3
+    })
+    console.log(res4)
+
+    // деструктуризация объектов
+    const userProfile = {
+        name: 'Bogdan',
+        commentQty: 23,
+        hasSigned: true
+    }
+
+    const {name, commentQty} = userProfile
+    const {hasSigned} = userProfile
+    console.log(name, commentQty, hasSigned)
+    // деструктуризация массивов
+    const userProfile2 = [1, 2, 3]
+    const [one, two] = userProfile2
+    console.log(one, two)
+    // деструктуризация в функциях
+    const userProfile3 = {
+        name: 'Bogdan',
+        commentQty: 23,
+        hasSigned: false
+    }
+    const userInfo = ({name, commentQty}) => {
+        if (!commentQty) {
+            return `User ${name} has no comments`
+        }
+        return `User ${name} has ${commentQty} comments`
+    }
+    userInfo(userProfile3)
+
+    if (!userProfile3.hasSigned) {
+        console.log(userProfile3.hasSigned)
+    }
+
+    if (!userProfile3.god) {
+        console.log('No such field')
+    }
+</script>
+</html>
