@@ -127,5 +127,30 @@
     if (!userProfile3.god) {
         console.log('No such field')
     }
+
+    //тернарный оператор
+    const value = 12
+    const res5 = value >= 0 ? value : -value
+    console.log(res5)
+
+    // получения индекса элемента массива через forEach
+    userProfile2.forEach((element, index) => {
+        console.log(element, index)
+    })
+
+    // цикл for in
+    for (const key in userProfile) {
+        console.log(key, userProfile[key])
+    }
+
+    // получение всех ключей объекта в виде массива через keys  
+    Object.keys(userProfile).forEach(key => {
+        console.log(key, userProfile[key])
+    })
+
+    // получение всех значений объекта в виде массива через values 
+    Object.values(userProfile).forEach(value => {
+        console.log(value)
+    })
 </script>
 </html>

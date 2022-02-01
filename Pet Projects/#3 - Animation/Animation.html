@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="animation: fly 3s 2s infinite;" class="square"></div>    
+</body>
+
+<style>
+    body {
+        margin: 0;
+    }
+
+    .square {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    @keyframes fly {
+        0% {
+            top: 0;
+            left: 0;
+            transform: translate(0) translateY(0);
+        }
+        25% {
+            top: 0;
+            left: 100%;
+            transform: translateX(-100%) translateY(0) rotate(360deg);
+            background-color: green;
+        }
+        50% {
+            top: 100%;
+            left: 100%;
+            transform: translateX(-100%) translateY(-100%);
+            background-color: red;
+        }
+        75% {
+            top: 100%;
+            left: 0;
+            transform: translateX(0) translateY(-100%) rotate(360deg);
+            background-color: green;
+        }
+        100% {
+            top: 0;
+            left: 0;
+            transform: translateX(0) translateY(0);
+        }
+    }
+</style>
+</html>

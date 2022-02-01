@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="parrent">
+		<img src="./загрузка.jpg" alt="">
+		<div class="circle active" onclick="select()">
+
+		</div>
+	</div>
+	<div class="parrent">
+		<img src="./загрузка.jpg" alt="">
+		<div class="circle" onclick="select()">
+
+		</div>
+	</div>
+	<div class="parrent">
+		<img src="./загрузка.jpg" alt="">
+		<div class="circle" onclick="select()">
+
+		</div>
+	</div>
+	<div class="parrent">
+		<img src="./загрузка.jpg" alt="">
+		<div class="circle" onclick="select()">
+
+		</div>
+	</div>
+	<div class="parrent">
+		<img src="./загрузка.jpg" alt="">
+		<div class="circle" onclick="select()">
+
+		</div>
+	</div>
+</body>
+
+<style>
+	.circle {
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+		background-color: rgba(0, 0, 0, 1);
+		opacity: 0.3;
+		margin: 10px;
+		transition: opacity 0.3s;
+	}
+
+	.circle:hover {
+		opacity: 1;
+	}
+
+	.active {
+		opacity: 1;
+	}
+
+	img {
+		width: 300px;
+		display: none;
+		position: fixed;
+		right: 0;
+		top: 0;
+	}
+</style>
+
+<script>
+	function select() {
+		//event.target - получили элемент
+		//event.target.classList - получили все классы данного элемента
+
+		//находим активный элемент, потом рядом с ним родителя и обращаемся к его картинке меняя её свойства
+		document.querySelector(".active").closest('.parrent').querySelector('img').style.display = "none";
+
+		//находим первый активный и удаляем
+		document.querySelector(".active").classList.remove("active");
+		event.target.classList.add("active");
+
+		//ищем картинку рядом, потом картинку и меняем ей свойство
+		event.target.closest('.parrent').querySelector('img').style.display = "block";
+	}
+</script>
+
+</html>

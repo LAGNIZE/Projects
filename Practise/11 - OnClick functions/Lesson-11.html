@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="square black-square" onclick="borderSwitch()">
+
+	</div>
+	<div onclick="makeBlack()">
+		make black
+	</div>
+	<div onclick="makeYellow()">
+		make yellow
+	</div>
+</body>
+
+<style>
+	.black-square {
+		width: 100px;
+		height: 100px;
+		background-color: black;
+	}
+
+	.yellow-circle {
+		width: 150px;
+		height: 150px;
+		background-color: yellow;
+		border-radius: 50%;
+	}
+
+	.border-dash {
+		border: 3px dashed green;
+	}
+</style>
+
+<script>
+	function makeBlack() {
+		document.querySelector(".square").classList.remove("yellow-circle");
+		document.querySelector(".square").classList.add("black-square");
+	}
+
+	function makeYellow() {
+		document.querySelector(".square").classList.remove("black-square");
+		document.querySelector(".square").classList.add("yellow-circle");
+	}
+
+	function borderSwitch() {
+		document.querySelector(".square").classList.toggle("border-dash")
+	}
+</script>
+
+</html>

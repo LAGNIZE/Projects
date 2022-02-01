@@ -1,0 +1,24 @@
+.flex-box {
+    display: flex;
+}
+
+.flex-horizontal-center {
+    justify-content: space-between;
+}
+
+.flex-vertical-center {
+    align-items: center;
+}
+
+.no-shrink {
+    flex-shrink: 0;
+    /*не плющить 3-й элемент при сужении окна браузера, значения 0 и 1*/
+}
+
+.round {
+    border-radius: 50% !important;
+}
+
+.flex-wrap {
+    flex-wrap: nowrap;
+}

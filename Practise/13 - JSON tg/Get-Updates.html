@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+</head>
+<script>
+    //отключаем асинхронные (параллельные) запросы, отключаем многопоточность, для надежности, но при этом страдает быстродействие
+    $.ajaxSetup({async : false})
+    //счетчик обновлений
+    let offset = 0;
+    //добавляем интервал для опроса новых сообщений
+    setInterval(function () {
+        //отправляем запрос в ТГ и сохраняем ответ в перемменную response
+        let response = $.get("https://api.telegram.org/bot2023002074:AAFEqzEOTQSbWVqyDiEGemXpAmMYTj3V8qU/getUpdates?offset=" + offset)
+        //console.log(response)
+        //достаём нужный нам текст из ответа сервера
+        let json = response.responseText
+        //console.log(json)
+        //преобразуем (парсим) json в масссив. JSON - дядька который работает с json файлами (как document и event)
+        let array = JSON.parse(json)
+        //console.log(array)
+        //если количество элементов больше в массиве больше 0, то выводить сообщение
+        if (array.result.length > 0) {
+            //выводим текст
+            let text = array.result[0].message.text
+            //ищем id юзера
+            let userId = array.result[0].message.from.id
+            //формируем ссылку для отправки сообщения
+            let url = "https://api.telegram.org/bot2023002074:AAFEqzEOTQSbWVqyDiEGemXpAmMYTj3V8qU/sendMessage?chat_id="+ userId +"&text=hello"
+            //оправляем сообщение
+            $.get(url)
+            //запоминаем update_id последнего сообщения
+            offset = array.result[0].update_id + 1
+            console.log(text) 
+        }
+    }, 1000)        
+</script>
+<body>
+    
+</body>
+
+</html>

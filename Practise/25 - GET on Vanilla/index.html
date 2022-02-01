@@ -1,0 +1,16 @@
+<script>
+    // jQuery: $.get('адрес') + $.ajaxSetup({async:false})
+    
+    // Vanilla
+    function sendGet(url) {
+        let xhr = new XMLHttpRequest() // создаём новый объект который умеет отправлять запросы
+        xhr.open("GET", url, false) // открываем соединение - конфигурируем; xhr.open(a, b, c) a - тип запроса (GET или POST), b - адрес куда, c - async true or false
+        xhr.send() // отправка запроса
+        return xhr.responseText
+    }
+
+    sendGet("https://api.telegram.org/<TOKEN>/sendMessage?chat_id=154685689&text=eeeeee")
+    sendGet("https://api.telegram.org/<TOKEN>/sendMessage?chat_id=154685689&text=rrrrrr")
+    let test = sendGet("https://api.telegram.org/<TOKEN>/sendMessage?chat_id=154685689&text=tttttt")
+    console.log(test)
+</script>

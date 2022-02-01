@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="./css/style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="./js/script.js"></script>
+
+<body>
+	<div class="wrapper">
+		<div class="messages" id="messages">
+		</div>
+		<div class="messWrap" style="background-color:silver; width: 400px;">
+			<div class="att">
+				<img src="./img/att.png" alt="">
+			</div>
+			<div>
+				<textarea class="sendText" id="" cols="35" rows="1" placeholder="Write a message..."
+					style="background: transparent; border: 0 none;"></textarea>
+			</div>
+			<div class="att">
+				<img src="./img/smile.png" alt="">
+			</div>
+			<div class="att">
+				<img src="./img/mic.png" alt="">
+			</div>
+		</div>
+	</div>
+</body>
+
+<script>
+	let block = document.getElementById("messages");
+	block.scrollTop = block.scrollHeight;
+
+	setInterval(function () {
+		getMessage();
+		block.scrollTop = block.scrollHeight;
+	}, 1000)
+
+	document.onkeyup = function () {
+		if (event.keyCode == 13) {
+			sendMessage();
+		}
+	}
+</script>

@@ -1,0 +1,71 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.messages {
+    width: 400px;
+    height:500px; 
+    margin-top: 5px ; 
+    background: url(https://i.pinimg.com/originals/8f/ba/cb/8fbacbd464e996966eb9d4a6b7a9c21e.jpg);
+    color: black;
+    overflow: scroll;
+	 overflow-x: hidden;
+}
+
+.message {
+    background-color: white;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 5px;
+    margin: 5px 0px 5px 5px;
+	 padding: 5px;
+}
+
+.messWrap {
+	display: flex;
+}
+
+.att:not(:last-child) img {
+	padding: 10px;
+}
+
+.att img {
+	max-width: 20px;
+	padding: 10px 10px 10px 0px;
+}
+
+.myMessage {
+    background-color: blue;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 5px;
+    margin: 5px 0px 5px 200px;
+}
+
+.sendText {
+    margin: 10px 0px 10px 10px;
+}
+
+::-webkit-scrollbar {
+	width: 7px;
+ }
+
+ ::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 5px grey; 
+	border-radius: 10px;
+ }
+
+ ::-webkit-scrollbar-thumb {
+	background: grey; 
+	border-radius: 10px;
+ }
+
+ ::-webkit-scrollbar-thumb:hover {
+	background: black; 
+ }
