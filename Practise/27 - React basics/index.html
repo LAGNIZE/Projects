@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@17/umd/react.production.min.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div style="display: flex">
+      <div style="margin-right: 20px" id="app"></div>
+      <div style="margin-right: 20px" id="test"></div>
+      <div id="good"></div>
+    </div>
+    <script type="text/babel">
+      let car = {
+        mark: "Dodge",
+        model: "Viper",
+        photo:
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Dodge_Viper_SRT-10.jpg/1200px-Dodge_Viper_SRT-10.jpg",
+        power: 1000,
+        volume: 3.5,
+        info: function () {
+          return `Марка ${this.mark}, модель ${this.model}, мощность ${this.power} л.с., объём ${this.volume}`;
+        },
+      };
+
+      let bus = {
+        mark: "Ural",
+        model: "400",
+        photo:
+          "https://uzst.ru/images/stories/contentimages/catalog/4597-59078.jpg",
+      };
+
+      let good = {
+        title: "Wow",
+        price: 500,
+        photo:
+          "https://uzst.ru/images/stories/contentimages/catalog/4597-59078.jpg",
+      };
+
+      class Car extends React.Component {
+        render() {
+          return (
+            <div>
+              <div>Марка: {this.props.mark}</div>
+              <div>Модель: {this.props.model}</div>
+              <div class="viper">
+                <img src={this.props.photo}></img>
+              </div>
+            </div>
+          );
+        }
+      }
+
+      class Good extends React.Component {
+        render() {
+          return (
+            <div>
+              <div>Title: {this.props.title}</div>
+              <div>Price: {this.props.price}</div>
+              <div class="viper">
+                <img src={this.props.photo}></img>
+              </div>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(
+        <Car mark={car.mark} model={car.model} photo={car.photo} />,
+        document.querySelector("#app")
+      );
+      ReactDOM.render(
+        <Car mark={bus.mark} model={bus.model} photo={bus.photo} />,
+        document.querySelector("#test")
+      );
+      ReactDOM.render(
+        <Good title={good.title} price={good.price} photo={good.photo} />,
+        document.querySelector("#good")
+      );
+    </script>
+  </body>
+</html>
+<style>
+  .viper img {
+    max-width: 200px;
+  }
+</style>
