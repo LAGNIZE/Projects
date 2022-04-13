@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="board">
+      <div>{{itemData.Name}} - {{itemData.City}} - {{itemData.Street}} - {{itemData.Apt}}</div>     
+    </div>
+  </body>
+  <script>
+    let board = Vue.createApp({
+      data() {
+        return {
+          itemData: "",
+        };
+      },
+      mounted() {
+        this.fetchData()
+      },
+      methods: {
+        fetchData() {
+          fetch("http://localhost:8010/?school=nordic")
+            .then((response) => response.json())
+            .then((value) => (this.itemData = value));
+        },
+      },
+    });
+
+    board.mount("#board");
+  </script>
+</html>
